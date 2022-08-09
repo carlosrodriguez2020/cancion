@@ -1,20 +1,21 @@
 import React, { Component } from "react";
 
 export default class StateRCC extends Component {
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
     this.state = {
       contador: 0,
     };
-    setInterval(() => {
-      this.state.contador += 1;
-      this.setState({ contador: this.state.contador + 1 });
-    }, 10);
   }
+  cuenta = () => {
+    this.setState({ contador: this.state.contador + 1 });
+  };
+
   render() {
     return (
       <div>
         <h2>StateRCC</h2>
+        <button onClick={this.cuenta}>SetInterval</button>
         <p>{this.state.contador}</p>
       </div>
     );

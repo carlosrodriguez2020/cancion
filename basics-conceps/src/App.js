@@ -1,5 +1,6 @@
 import { useState } from "react";
 import "./App.css";
+import Listas from "./components/Listas";
 import Properties from "./components/Properties";
 import RCComponent from "./components/RCComponent";
 import RenderizadoCondicional from "./components/RenderizadoCondicional";
@@ -32,8 +33,9 @@ function App() {
         boolean={true}
       />
       <button onClick={() => aumentar()}>Increment</button>
-      {/* <StateRCC /> */}
+      <StateRCC />
       <RenderizadoCondicional />
+      <Listas />
     </div>
   );
 }
