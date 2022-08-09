@@ -1,8 +1,10 @@
 import { useState } from "react";
 import "./App.css";
+import Evevntos from "./components/Evevntos";
 import Listas from "./components/Listas";
 import Properties from "./components/Properties";
 import RCComponent from "./components/RCComponent";
+import Reloj from "./components/Reloj";
 import RenderizadoCondicional from "./components/RenderizadoCondicional";
 import RFComponent from "./components/RFComponent";
 import StateRCC from "./components/StateRCC";
@@ -36,6 +38,8 @@ function App() {
       <StateRCC />
       <RenderizadoCondicional />
       <Listas />
+      <Evevntos />
+      <Reloj />
     </div>
   );
 }
