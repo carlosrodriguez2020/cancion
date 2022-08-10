@@ -1,5 +1,6 @@
 import { useState } from "react";
 import "./App.css";
+import Apis from "./components/Apis";
 import Evevntos from "./components/Evevntos";
 import Listas from "./components/Listas";
 import Properties from "./components/Properties";
@@ -40,6 +41,8 @@ function App() {
       <Listas />
       <Evevntos />
       <Reloj />
+      <h2>Apis</h2>
+      <Apis />
     </div>
   );
 }
