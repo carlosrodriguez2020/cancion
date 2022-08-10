@@ -6,6 +6,7 @@ import Listas from "./components/Listas";
 import Properties from "./components/Properties";
 import RCComponent from "./components/RCComponent";
 import Reloj from "./components/Reloj";
+import RelojHook from "./components/RelojHook";
 import RenderizadoCondicional from "./components/RenderizadoCondicional";
 import RFComponent from "./components/RFComponent";
 import StateRCC from "./components/StateRCC";
@@ -43,6 +44,8 @@ function App() {
       <Reloj />
       <h2>Apis</h2>
       <Apis />
+      <h2>Reloj Hook</h2>
+      <RelojHook />
     </div>
   );
 }
