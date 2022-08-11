@@ -3,7 +3,7 @@ import { Alert, AlertTitle } from "@material-ui/lab";
 import { Link, useLocation } from "react-router-dom";
 import HomeIcon from "@material-ui/icons/Home";
 import IconButton from "@material-ui/core/IconButton";
-import { FormatAlignCenter } from "@material-ui/icons";
+
 export const Error404 = () => {
   let url = useLocation();
   return (

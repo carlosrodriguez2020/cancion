@@ -3,20 +3,28 @@ import ReactDOM from "react-dom/client";
 import App from "./App";
 import * as serviceWorkerRegistration from "./serviceWorkerRegistration";
 import reportWebVitals from "./reportWebVitals";
-import { MuiThemeProvider, createMuiTheme } from "@material-ui/core/styles";
+// import { ThemeProvider, createTheme } from "@material-ui/core/styles";
+import { ThemeProvider } from "@material-ui/core/styles";
 
-const them = createMuiTheme({
-  palette: {
-    main: "#61DAFB",
-  },
-});
+// const them = createTheme({
+//   palette: {
+//     main: "#61DAFB",
+//   },
+// });
+
+// const theme = createTheme({
+//   status: {
+//     danger: orange[500],
+//   },
+// });
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <MuiThemeProvider theme={them}>
+    <App />
+    {/* <ThemeProvider theme={them}>
       <App />
-    </MuiThemeProvider>
+    </ThemeProvider> */}
   </React.StrictMode>
 );
 
