@@ -26,7 +26,7 @@ export const Error404 = () => {
         </Alert>
       </section>
       <div style={{ margin: "1rem auto", textAlign: "center" }}>
-        <IconButton color="primary">
+        <IconButton color="custom">
           <Link to="/">
             <HomeIcon />
           </Link>

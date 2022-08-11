@@ -13,7 +13,7 @@ function App() {
   let mySongsInit = JSON.parse(localStorage.getItem("mySongs"));
   const [mySongs, setMySongs] = useState(mySongsInit);
   let serchInit = {
-    artis: "",
+    artist: "",
     song: "",
     req: false,
   };
@@ -27,7 +27,16 @@ function App() {
           <Headers />
           <main className="App-main">
             <Routes>
-              <Route path="/" element={<Buscador />} />
+              <Route
+                path="/"
+                element={
+                  <Buscador
+                    serch={serch}
+                    setSerch={setSerch}
+                    setError={setError}
+                  />
+                }
+              />
 
               <Route path="/cancion/:id" element={<Cancion />} />
               <Route path="*" element={<Error404 />} />

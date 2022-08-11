@@ -1,26 +1,51 @@
 import React from "react";
-import { makeStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
+import { makeStyles } from "@material-ui/core/styles";
 import IconButton from "@material-ui/core/IconButton";
 import HomeIcon from "@material-ui/icons/Home";
 import WebAssetIcon from "@material-ui/icons/WebAsset";
-export const Buscador = () => {
-  const useStyles = makeStyles((theme) => ({
-    root: {
-      display: "flex",
-      justifyContent: "center",
-      alignItems: "center",
 
-      "& > *": {
-        margin: theme.spacing(1),
-        width: "25ch",
-      },
+const useStyles = makeStyles((theme) => ({
+  root: {
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+
+    "& > *": {
+      margin: theme.spacing(1),
+      width: "25ch",
     },
-  }));
+  },
+}));
+
+export const Buscador = ({ serch, setSerch, setError }) => {
   const classes = useStyles();
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setSerch({
+      artis: e.target.artist.value,
+      song: e.target.song.value,
+      req: true,
+    });
+  };
+  const handleReset = () => {
+    setSerch({
+      artis: "",
+      song: "",
+      req: false,
+    });
+    setError(false);
+  };
+
   return (
     <div>
-      <form className={classes.root} autoComplete="on">
+      <form
+        className={classes.root}
+        autoComplete="on"
+        onSubmit={handleSubmit}
+        onReset={handleReset}
+      >
         <IconButton color="primary" type="reset">
           <HomeIcon />
         </IconButton>
@@ -30,6 +55,14 @@ export const Buscador = () => {
           label="Artista"
           variant="outlined"
           size="small"
+          value={serch.artist}
+          onChange={(e) => {
+            setSerch({
+              ...serch,
+              artist: e.target.value,
+              req: false,
+            });
+          }}
           required
         />
         <TextField
@@ -38,6 +71,14 @@ export const Buscador = () => {
           label="Cancion"
           variant="outlined"
           size="small"
+          value={serch.song}
+          onChange={(e) => {
+            setSerch({
+              ...serch,
+              song: e.target.value,
+              req: false,
+            });
+          }}
           required
         />
         <IconButton color="primary" type="submit">
