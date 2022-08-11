@@ -16,7 +16,7 @@ function App() {
           <main className="App-main">
             <Routes>
               <Route path="/" element={<Home />} />
-              <Route path="/" element={<Cancion />} />
+              <Route path="/cancion/:id" element={<Cancion />} />
               <Route path="*" element={<Error404 />} />
             </Routes>
           </main>

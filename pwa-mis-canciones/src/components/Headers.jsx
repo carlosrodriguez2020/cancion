@@ -6,6 +6,7 @@ export const Headers = () => {
     <header className="App-header">
       <img src={logo} className="App-logo" alt="logo" />
       <h1>Mis canciones</h1>
+
       <img src={logo} className="App-logo" alt="logo" />
     </header>
   );

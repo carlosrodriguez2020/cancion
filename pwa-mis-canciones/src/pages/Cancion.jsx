@@ -1,11 +1,15 @@
 import React from "react";
+import { Link, useParams } from "react-router-dom";
 
-function componentName() {
+const Cancion = () => {
+  let { id } = useParams();
   return (
     <div>
-      <h2>Canciones</h2>
+      <p>
+        Esto es el id <b>{id}</b>
+      </p>
     </div>
   );
-}
+};
 
-export default componentName;
+export default Cancion;
