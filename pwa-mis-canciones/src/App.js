@@ -20,6 +20,39 @@ function App() {
   const [serch, setSerch] = useState(serchInit);
   const [error, setError] = useState(false);
   const [currentSong, setCurrentSong] = useState({});
+
+  useEffect(() => {
+    localStorage.getItem("mySongs");
+    const getData = async () => {
+      const { artist, song } = serch;
+
+      try {
+        let artistApi = `https://www.theaudiodb.com/api/v1/json/2/search.php?s=${artist}`,
+          songApi = `https://api.lyrics.ovh/v1/${artist}/${song}`,
+          artistRes = await fetch(artistApi),
+          songRes = await fetch(songApi),
+          artisJson = await artistRes.JSON(),
+          songJson = await songRes.JSON();
+        console.log(artisJson, songJson);
+
+        setCurrentSong({});
+      } catch (error) {
+        setSerch({
+          artist,
+          song,
+          req: false,
+        });
+        setError(true);
+      }
+    };
+
+    if (!serch.req) {
+      return;
+    } else {
+      getData();
+    }
+  }, [serch]);
+
   return (
     <BrowserRouter>
       <CssBaseline>

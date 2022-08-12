@@ -13,7 +13,7 @@ const useStyles = makeStyles((theme) => ({
 
     "& > *": {
       margin: theme.spacing(1),
-      width: "25ch",
+      width: "auto",
     },
   },
 }));
@@ -51,7 +51,7 @@ export const Buscador = ({ serch, setSerch, setError }) => {
         </IconButton>
         <TextField
           id="artist"
-          name="Artist"
+          name="artist"
           label="Artista"
           variant="outlined"
           size="small"
@@ -67,7 +67,7 @@ export const Buscador = ({ serch, setSerch, setError }) => {
         />
         <TextField
           id="song"
-          name="Cancion"
+          name="song"
           label="Cancion"
           variant="outlined"
           size="small"
