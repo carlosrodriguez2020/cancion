@@ -40,6 +40,7 @@ const ListaCanciones = ({ mySongs, setMySongs }) => {
     localStorage.setItem("mySongs", JSON.stringify(songs));
   };
 
+  console.log(mySongs);
   return (
     <div className={classes.root}>
       <div className={classes.demo}>

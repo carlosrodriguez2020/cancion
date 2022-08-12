@@ -35,13 +35,14 @@ const Letra = ({
   setMySongs,
   setSerch,
 }) => {
+  console.log(mySongs);
   const classes = useStyles();
 
   const handleClick = (e) => {
     setMySongs((mySongs) => [...mySongs, setCurrentSong]);
     setSerch({
-      artist: "",
-      song: "",
+      artist: <h1>artist</h1>,
+      song: <h1>song</h1>,
       req: false,
     });
     setCurrentSong({});
@@ -51,8 +52,8 @@ const Letra = ({
     <Card className={classes.root}>
       <CardMedia
         className={classes.media}
-        image={currentSong.avatar}
-        title={currentSong.artist}
+        image={currentSong?.avatar}
+        title={currentSong?.artist}
       />
       <CardContent>
         <Typography
@@ -61,9 +62,9 @@ const Letra = ({
           component="h2"
           className={classes.title}
         >
-          {currentSong.artist}-{currentSong.song}
+          {currentSong?.artist}-{currentSong?.song}
         </Typography>
-        <Typography>{currentSong.lyrics}</Typography>
+        <Typography>{currentSong?.lyrics}</Typography>
       </CardContent>
 
       <CardActions className={classes.addBtn}>
