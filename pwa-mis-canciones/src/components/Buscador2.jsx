@@ -4,6 +4,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import IconButton from "@material-ui/core/IconButton";
 import HomeIcon from "@material-ui/icons/Home";
 import WebAssetIcon from "@material-ui/icons/WebAsset";
+import { useForm } from "react-hook-form";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -18,17 +19,10 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export const Buscador = ({ serch, setSerch, setError }) => {
-  const classes = useStyles();
+const Buscador2 = ({ serch, setSerch, setError }) => {
+  const { artist, song } = serch;
+  const { register, handleSubmit } = useForm();
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    setSerch({
-      artis: e.target.artist.value,
-      song: e.target.song.value,
-      req: true,
-    });
-  };
   const handleReset = () => {
     setSerch({
       artis: "",
@@ -37,28 +31,45 @@ export const Buscador = ({ serch, setSerch, setError }) => {
     });
     setError(false);
   };
-  const setBusqueda = (e) => {
+
+  const setBusquedaA = (serch) => {
+    console.log(serch);
     setSerch({
       ...serch,
-      artist: e.target.value,
+      artist: artist,
       req: false,
     });
-  };
 
-  const setBusquedaS = (e) => {
+    console.log(">>>", artist);
+  };
+  const setBusquedaS = (serch) => {
+    console.log(serch);
     setSerch({
       ...serch,
-      song: e.target.value,
+      artist: serch.song,
       req: false,
     });
+    console.log(">>>", song);
+  };
+  const onSubmit = ({ artist, song }) => {
+    // e.preventDefault();
+    setSerch({
+      artist: artist,
+      song: song,
+      req: true,
+    });
+    // console.log({ serch });
+    setBusquedaA();
+    setBusquedaS();
   };
 
+  const classes = useStyles();
   return (
     <div>
       <form
         className={classes.root}
         autoComplete="on"
-        onSubmit={handleSubmit}
+        onSubmit={handleSubmit(onSubmit)}
         onReset={handleReset}
       >
         <IconButton color="primary" type="reset">
@@ -70,46 +81,21 @@ export const Buscador = ({ serch, setSerch, setError }) => {
           label="Artista"
           variant="outlined"
           size="small"
-          value={serch.artist}
-          onChange={setBusqueda}
-          // onChange={(e) => {
-          //   setSerch({
-          //     ...serch,
-          //     artist: e.target.value,
-          //     req: false,
-          //   });
-          // }}
-          // onChange={(e) => {
-          //   setSerch({
-          //     ...serch,
-          //     artist: e.target.value,
-          //     req: false,
-          //   });
-          // }}
+          onChange={setBusquedaA}
+          // value={serch.artis}
+          {...register("artist")}
           required
         />
+
         <TextField
           id="song"
           name="song"
           label="Cancion"
           variant="outlined"
           size="small"
-          value={serch.song}
           onChange={setBusquedaS}
-          // onChange={(e) => {
-          //   setSerch({
-          //     ...serch,
-          //     song: e.target.value,
-          //     req: false,
-          //   });
-          // }}
-          // onChange={(e) => {
-          //   setSerch({
-          //     ...serch,
-          //     song: e.target.value,
-          //     req: false,
-          //   });
-          // }}
+          // value={serch.song}
+          {...register("song")}
           required
         />
         <IconButton color="primary" type="submit">
@@ -119,4 +105,5 @@ export const Buscador = ({ serch, setSerch, setError }) => {
     </div>
   );
 };
-export default Buscador;
+
+export default Buscador2;

@@ -1,46 +1,79 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import clsx from "clsx";
 import Card from "@material-ui/core/Card";
-import CardHeader from "@material-ui/core/CardHeader";
-import CardMedia from "@material-ui/core/CardMedia";
-import CardContent from "@material-ui/core/CardContent";
 import CardActions from "@material-ui/core/CardActions";
-import Collapse from "@material-ui/core/Collapse";
-import Avatar from "@material-ui/core/Avatar";
-import IconButton from "@material-ui/core/IconButton";
+import CardContent from "@material-ui/core/CardContent";
+import CardMedia from "@material-ui/core/CardMedia";
+import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
-import { red } from "@material-ui/core/colors";
-import FavoriteIcon from "@material-ui/icons/Favorite";
-import ShareIcon from "@material-ui/icons/Share";
-import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
-import MoreVertIcon from "@material-ui/icons/MoreVert";
+import AddCircleIcon from "@material-ui/icons/AddCircle";
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    maxWidth: 345,
+    maxWidth: 800,
+    margin: "2rem auto",
+  },
+  lyrics: {
+    whiteSpace: "pre-wrap !important",
+  },
+  title: {
+    marginBottom: "3rem !important",
   },
   media: {
-    height: 0,
-    paddingTop: "56.25%", // 16:9
+    backgroundSize: "COVER",
+    height: "50vh",
   },
-  expand: {
-    transform: "rotate(0deg)",
-    marginLeft: "auto",
-    transition: theme.transitions.create("transform", {
-      duration: theme.transitions.duration.shortest,
-    }),
-  },
-  expandOpen: {
-    transform: "rotate(180deg)",
-  },
-  avatar: {
-    backgroundColor: red[500],
+  addBtn: {
+    justifyContent: "flex-end",
   },
 }));
 
-export const Letra = () => {
-  return <div>Letra</div>;
+const Letra = ({
+  currentSong,
+  setCurrentSong,
+  mySongs,
+  setMySongs,
+  setSerch,
+}) => {
+  const classes = useStyles();
+
+  const handleClick = (e) => {
+    setMySongs((mySongs) => [...mySongs, setCurrentSong]);
+    setSerch({
+      artist: "",
+      song: "",
+      req: false,
+    });
+    setCurrentSong({});
+  };
+
+  return (
+    <Card className={classes.root}>
+      <CardMedia
+        className={classes.media}
+        image={currentSong.avatar}
+        title={currentSong.artist}
+      />
+      <CardContent>
+        <Typography
+          gutterBottom
+          variant="h4"
+          component="h2"
+          className={classes.title}
+        >
+          {currentSong.artist}-{currentSong.song}
+        </Typography>
+        <Typography>{currentSong.lyrics}</Typography>
+      </CardContent>
+
+      <CardActions className={classes.addBtn}>
+        <Button size="large" color="primary" onClick={handleClick}>
+          <AddCircleIcon />
+          AGREGAR
+        </Button>
+      </CardActions>
+    </Card>
+  );
 };
 
 export default Letra;
